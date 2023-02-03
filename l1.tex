@@ -29,13 +29,13 @@ Notation: $x \in A \rightarrow x \text{ is element of } A$
 \subsection{Set by comprehension}
 Notation: $A = \{x \in U \ | \ P(x) \text{ is true}\}$
 \begin{align*}
-    \text{even numbers: } E              & = \{\ldots, -4, -2,0,2,4,\dots \}                                                                                      \\
-                                         & = \{x \in \mathbb{Z} \ | \ x = 2n \text{ for some } n \in \mathbb{Z} \}                                                \\
-    \text{odd numbers: } O               & = \{\dots,-3,-1,3,\dots \}                                                                                             \\
-                                         & = \{x \in \mathbb{Z} \ | \ x = 2n+1 \text{ for some } n \in \mathbb{Z} \}                                              \\
-    \text{also: }                        & =  \{n+1 \ | \ n \in E \}                                                                                              \\
-                                         & = \{x \in \mathbb{Z} \ | \ x = n+1 \text{ for some } n \in E \}                                                        \\
-    \text{rational numbers: } \mathbb{Q} & = \{\frac{a}{b} \ | \ a \in \mathbb{Z}, b \in                             \mathbb{Z}, b \neq 0, b > 0, GCD(a,b) = 1 \}
+    \text{even numbers: } E              & = \{\ldots, -4, -2,0,2,4,\dots \}                                                          \\
+                                         & = \{x \in \mathbb{Z} \ | \ x = 2n \text{ for some } n \in \mathbb{Z} \}                    \\
+    \text{odd numbers: } O               & = \{\dots,-3,-1,3,\dots \}                                                                 \\
+                                         & = \{x \in \mathbb{Z} \ | \ x = 2n+1 \text{ for some } n \in \mathbb{Z} \}                  \\
+    \text{also: }                        & =  \{n+1 \ | \ n \in E \}                                                                  \\
+                                         & = \{x \in \mathbb{Z} \ | \ x = n+1 \text{ for some } n \in E \}                            \\
+    \text{rational numbers: } \mathbb{Q} & = \{\frac{a}{b} \ | \ a \in \mathbb{Z}, b \in \mathbb{Z}, b \neq 0, b > 0, GCD(a,b) = 1 \}
 \end{align*}
 
 \subsection{Subsets}
@@ -53,4 +53,17 @@ Notation: $\lvert A \rvert$
 \[
     A = \{1,3,5\} \text{\indent } \lvert A \rvert = 3
 \]
+
+\subsection{Russel set paradox}
+Russel set: $R = \{x \text{ is a set} \ | \ x \notin x \}$\\
+ex:
+\begin{gather*}
+    \mathbb{N} \notin \mathbb{N}, \text{ so } \mathbb{N} \in \mathbb{R} \\
+    x = \{1,2,x\} \text{ satisfies } x \in x \Rightarrow x \notin \mathbb{R}
+\end{gather*}
+Question: is $R \in R$?
+\begin{itemize}
+    \item If $R \in R$ then $R \notin R$
+    \item If $R \notin R$ then $R \in R$
+\end{itemize}
 \end{document}

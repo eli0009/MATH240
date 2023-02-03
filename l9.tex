@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\author{Enlai Li}
+\title{MATH 240 \textemdash \ Lecture x}
+\date{February 2, 2023}
+\begin{document}
+\maketitle
+
+\section{Bijection Principle}
+If A, B are finite sets: \\
+
+\[|A| = |B| \iff there exists a bijective function f: A \rightarrow B\]
+
+Ex: Show that for a finite set A
+\[|P(A)| = 2^{|A|}\]
+
+\[B_n = \{0, 1\} x \{0,1\} - x\{0, 1\} \\
+    = \{0,1\}^n\]
+
+So we just need to find a bijection
+\[
+    f: P(A) \rightarrow B_n\]
+in order to conclude (with the bijection Principle) that:
+\[|P(A)| = 2^n\]
+Let $x \in P(A)$, then $x \subseteq A$ \\
+Let $A = \{a_1, a_2, \ldots, a_n\}$
+Define: $f(x) = (b_1, b_2, \ldots, b_n)$
+
+\begin{equation}
+    \text{where $b_i$} =
+    \begin{cases}
+        1 & \text{if $a_i \in X$}    \\
+        0 & \text{if $a_i \notin X$}
+    \end{cases}
+\end{equation}
+Ex: \[A=\{1,2,3,4\}, X=\{1,4\} \Rightarrow f(x) = (1,0,0,1)\]
+
+This f is \underline{clearly} invertible
+\[f^{-1}(b_1, b_2, \ldots, b_n) = \{a_i \in A | b_i = 1\}\]
+invertible $\Rightarrow$ bijective
+\[f^{-1}(f(X)) = X \\
+    f(f^{-1}(b)) = b\]
+
+\section{Infinite Cardinalities}
+Let's extend the bijection principle to Infinite sets
+Def: Two sets A and B have the \underline{same cardinality} if there is a bijection $f:A\leftarrow B$
+
+We then write \[|A| = |B|\]
+Ex:
+\[ \mathbb{N} = \{0,1,2,3,4,\ldots \}\]
+\[ \mathbb{E} = \{0,2,4,6,8,\ldots \}\]
+
+
+Theorem: There is \underline{no} bijection between $\mathbb{N}$ and $\mathbb{R}$ for $(0, 1)$
+
+That $\mathbb{R}$ is strictly larger than $\mathbb{R}$
+\[\mathbb{N} < \mathbb{R}\]
+There are at least two different infinities! (In fact, there are infinitely many)
+
+Proof: (Canton's Diagonal Argument)
+
+By contradiction. Assume there is a bijection
+\[f:\mathbb{N} \leftarrow (0,1)\]
+
+Note: any $x \in (0,1)$ can be written in decimal notation:
+\[x = 0, a_1, a_2, a_3, \ldots (a_i \in 0, 1, \ldots, 9)\]
+
+\[Ex: \frac{1}{3} = 0.33333\ldots \\
+    a_i = 3, \forall_i\]
+
+\begin{align*}
+    f(0) = 0, a_0
+\end{align*}
+
+Now consiter the following nunber: \[C = 0.C_0C_1C_2C_3\ldots\]
+where
+\begin{equation}
+    \text{where } c_i =
+    \begin{cases}
+        4 & \text{if} a_{ii} \neq 4 \\
+        2 & \text{if} a_{ii} = 4
+    \end{cases}
+\end{equation}
+
+What matters is $c_i \neq a_ii (\forall_i) \Rightarrow C \neq f(n), \forall n \in \mathbb{N}$
+
+That's a contradiction!
+$c \in (0,1)$ but it is not in the "list" (which should have been complete) $\square$
+
+\subsection{Some remarks}
+\begin{enumerate}
+    \item Sets in bijection with $\mathbb{N}$ are called countable sets, ex:
+          \[\mathbb{N}, \mathbb{E}, \mathbb{O}, \mathbb{Z}, \mathbb{Q}\]
+          They are the "smallest" kind of infinite sets
+    \item Sets in bijection with $\mathbb{R}$ are called "continuous" \\
+          ex: $\mathbb{R}, (0,1)$, any real interval, \ldots
+    \item There are sets that are larger than $\mathbb{R}$ ex: \\
+          \[\mathbb{R} \subset |P(\mathbb{R})| \subset |P(P(\mathbb{R})) \subset \ldots\]
+          The proof of that is analogous to the one we just did
+    \item Is there a set $X$ with $|\mathbb{N}| < |\mathbb{X}| < |\mathbb{R}|$? \\
+          This problem is called the continuum hypothesis and is known to be undecidable!
+\end{enumerate}
+
+\subsection{Relations}
+Ex: Unit circle
+\[C = \{(x,y) \in \mathbb{R}^2 | x^2 + y^2 = 1\}\]
+
+Def: A \underline{relation} on a set $A$ is a subset $R \subseteq A \times A$
+
+Ex: Function $f: A \rightarrow A$
+\[\text{Graph } (f) = \{(x,y) \in A \times A | y = f(x)\}\]
+That is a relation which satisfies the vertical line test \ldots
+
+Ex: Equality on a set A:
+\[A = \{(x, x) | x\in A\}\]
+Ex:
+\begin{align}
+    (5,5) \in =_\mathbb{Z} : 5 =_\mathbb{Z} 5 \\
+    (2,5) \in \neq_\mathbb{Z} : 2 \neq_\mathbb{Z} 5
+\end{align}
+
+\subsection{Infix Notation}
+\begin{align}
+    s
+\end{align}
+
+Ex4: $U$: some universe of sets \ldots
+\[A \sim B \Rightarrow |A| = |B| \text{ meaning } \exists f: A \rightarrow B \text{ bijective}\]
+$\sim$ is a relation on $U$:
+\[\mathbb{N} \sim \mathbb{Z}\]
+
+\begin{align}
+    3
+\end{align}
+
+
+\end{document}
