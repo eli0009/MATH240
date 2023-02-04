@@ -9,5 +9,149 @@
 \begin{document}
 \maketitle
 
+\section{Relations}
 
+$R \subseteq A \times A$ intention of pairing together elemtns that are "equivalent" from a certain point of view \dots
+\\ex:
+\[
+    \frac{a}{b} \sim \frac{c}{d} \iff ad = bc
+\]
+What does it mean for 2 things to be "equivalent" from a mathematical POV?
+Definition: A relation $R \subseteq A \times A$ is \underline{reflexive} if $\forall x \in A, x R x$
+\\ex:
+\begin{itemize}
+    \item $=$ : because $x = x$
+    \item $\sim \text{ : } \frac{a}{b} \sim \frac{a}{b} \iff ab = ba$
+    \item $| \text{: } x|y \iff y = kx ( k \in \mathbb{Z})$ \\
+          Reflexive: $x|x \iff \exists k. x = kx \text{ True with } k=1$
+\end{itemize}
+non-examples:
+\begin{itemize}
+    \item Unit cercle: $xCy \iff x^2+y^2 = 1$ \\
+          We do not necessarily have $xCx \dots$, that would mean \begin{align*}
+              x^2 + x^2 & = 1                     \\
+              2x ^{2}   & = 1                     \\
+              x         & = +- \frac{1}{\sqrt{2}}
+          \end{align*}
+
+    \item Strict order: $< (\text{on } \mathbb{R}, \text{ on } \mathbb{Z}, \dots)$ \\
+          Counterexample: $42 \cancel{<} 42$, in fact $x < x$ is never true. \textit{but $<=$ is reflexive. $x <= x$}
+\end{itemize}
+
+\subsection{Transitive}
+Def: $R \subseteq A \times A$ is transitive of $\forall x,y,z \in A, xRy hat yRz \Rightarrow xRz$
+
+Assume: $x \sim y \text{ and } y \sim z$ i.e. $ad=bc \text{ and } cf=de$
+Goal: show $x \sim z$, i.e. $af=be$?
+\begin{align*}
+    df           & = bc           \\
+    adf          & = bcf          \\
+    a\cancel{d}f & = b\cancel{d}e \\
+    ad           & = be
+\end{align*}
+
+\subsection{Divisibility}
+\[
+    x|y cap y|z ?\Rightarrow x|z
+\]
+Assume $x|y$ and $y|z$ where
+$y = kx \text{ and } z = ly$
+. Then $z=ly=l(kx)=(lk)x \Rightarrow x|z$
+
+Note: $<$ and $<=$ are also transitive
+
+Non example:\\
+
+Unit circle:
+\begin{align*}
+    0 \subset 1                      & \text{ because } 0 ^{2} + 1 ^{2} = 1    \\
+    1 \subset 0                      & \text{ because } 0 ^{2} + 1 ^{2} = 1    \\
+    \text{But } 0 \cancel{\subset} 0 & \text{ because } 0 ^{2} + 0 ^{2} \neq 1
+\end{align*}
+
+Non-equality($\neq$):
+\begin{gather*}
+    0 \neq 1 \text{ and } 1 \neq 0 \\
+    \text{but it is not true that } 0 \neq 0
+\end{gather*}
+
+\subsection{Symmetric}
+Def: $R \subseteq A \times A$ is symmetric if $xRy \Rightarrow yRx$\\
+ex:
+\begin{align*}
+    x=y \Rightarrow y=x                 \\
+    \text{Unit cercle}                  \\
+    xCy \Rightarrow x ^{2} + y ^{2} = 1 \\
+    \Rightarrow y^2+x^2 =1 \Rightarrow yCx
+\end{align*}
+
+Fraction:
+\begin{align*}
+    \frac{a}{b} \sim \frac{c}{d} \iff & ad=bc                     \\
+    \iff                              & bc=ad                     \\
+    \iff                              & \frac{c}{d} = \frac{a}{b}
+\end{align*}
+
+Non-ex:\\
+$< \text{ and } <=$ are not symmetric \\
+Divisibility:
+\begin{gather*}
+    2|6 \text{\indent } 6=3\times 2 \\
+    but 6 \cancel{|} 2 \text{ because } 2=k6 \\
+    k= \frac{2}{6} \notin \mathbb{Z}
+\end{gather*}
+
+\subsection{equivalence relation}
+Def: if R is reflective, transitive and symmetric\\
+ex: \\
+$=$ and $\sim$ \\
+$A\sim B if \lvert A \rvert = \lvert B \rvert \iff \exists f: A \rightarrow B$ Bijective
+\\
+Show equivalence relation:
+\begin{enumerate}
+    \item Reflexive: $A \sim A$ \\ consider identity function \begin{gather*}
+              id_A: A \rightarrow A \text{ invertible} \\
+              id_A(x) = x \text{ bijective}
+          \end{gather*}
+    \item Symmetric: $A \sim B \Rightarrow \exists f:a \rightarrow$ bijective. Then $f$ is invertible and $f ^{-1} i B \rightarrow A$ and $f ^{-1}$ is also invertible (hence bijective) \[
+              (f ^{-1}) ^{-1} = f \Rightarrow B \sim A
+          \]
+          % \item Transitive: Assume $A \sim B$ and $B \sim C$. Then $\exists f:A \rightarrow B$ and $g:B \rightarrow C$ bijective. \Rightarrow $gof$ is a bijection from $A$ to $C$. It's invertible \[
+          %           (gof) = f ^{-1} o g ^{-1} \Rightarrow A hat C
+          %       \]
+\end{enumerate}
+
+$\frac{2}{3} \text{ and } \frac{4}{6}$ are equivalent because $\frac{2}{3} \sim \frac{4}{6}$ \\
+
+\subsection{equivalent relation}
+Def: Given an equivalent relation on a set $A$ and an elemtn $a \subseteq A$, the equivalence class of $a$ is the set
+\[
+    [a]\tilde{} = \{x \in A \ | \ x \sim a\}
+\]
+ex: \\
+\begin{gather*}
+    = \text{ Then } [a]_= = \{a\} \\
+    \text{on } \mathbb{F}: [\frac{a}{b}]_\sim = \{\frac{c}{d} \ | \ ad=bc\} \\
+    \text{ex: } [\frac{1}{2}]_\sim = \{\frac{1}{2}, \frac{2}{4}, \frac{42}{84}, \dots\} \\
+    [\mathbb{N}] = \{\text{comptable infinite sets}\}
+\end{gather*}
+
+Remark:
+\begin{enumerate}
+    \item $[a]_\sim \neq \emptyset$ because $a \in [a]$ be reflexivity $a \sim a$
+    \item $a \sim b \iff [a]_\sim = [b]_\sim$ \\ Assume $a \sim b$ NTS $[a]_\sim = [b]_\sim$ \\
+          Double inclusion: $[a]_\sim \subseteq [b]_\sim$
+    \item if $a \cancel{\sim} b$, then $[a]_\sim \sim [b]_\sim = \emptyset$ \\
+          proof by contrapositive: if $[a]_\sim \sim [b]_\sim \neq \emptyset$
+\end{enumerate}
+In the case of fractions we can ocnsider that teh rational number $\frac{1}{2}$ is the class $[\frac{1}{2}]_\sim$
+\\
+Def: equivelence relation on A, then the quotient set of $A z \sim$ \[
+    A / \sim = \{[x]_\sim \ | \ x \in A\}
+\]
+is the set of equivalence classes. We could define $\mathbb{Q} = \mathbb{F} / \sim$ \\
+so when we write \[
+    \frac{1}{2} = \frac{2}{4} \text{\indent } (\text{as in } \mathbb{Q})
+\]
+it means $[\frac{1}{2}_\sim] = [\frac{2}{4}_\sim]$
 \end{document}
