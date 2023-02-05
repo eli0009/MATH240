@@ -55,6 +55,62 @@ $U =$ The universe of objects
           \]
     \item Complement \[
               \overline{A} = A' = \{x \in U \ | \ x \notin A\} = U \backslash A
-          \]
+          \]ex:
+          \begin{align*}
+              A            & = \{1,2,3\}      \\
+              U            & = \mathbb{N}     \\
+              \overline{A} & =\{0,4,5,\dots\}
+          \end{align*}
+    \item Symmetric Difference \begin{align*}
+              A \oplus B & = \{x \in U \ | \ x \in A \text{ or } x \in B \text{ , but not both } \} \\
+                         & = (A \backslash B) \cup (B \backslash A)                                 \\
+                         & = (A\cup B) \backslash (A \cap B)                                        \\
+                         & = (A\cup B) \cap (A\cup B)
+          \end{align*}
+          ex:
+          \begin{align*}
+              A          & = \{1,2,3\}   \\
+              B          & = \{3,4,5\}   \\
+              A \oplus B & = \{1,2,4,5\}
+          \end{align*}
+
+
 \end{itemize}
+\section{Set identities}
+Theorem: If two sets A and B have the same Venn diagram, then $A=B$
+\\ Proof: We need to show $A \subseteq B \text{ and } B \subseteq A $ (They have similar proof)
+\begin{enumerate}
+    \item $A \subseteq B$ \\ Let $x \in A$, then x is in the shaded region of A's Venn diagram. So it's also in shaded version of B's Venn diagram, so $x \in B$
+    \item $B \subseteq A$ \\ Let $x \in B$, then x is in A's region. So it's also in B's region, so $x \in A$
+          \\ \hspace*{\fill} $\square$
+
+\end{enumerate}
+
+\subsection{Laws of boolean algebra}
+\begin{itemize}
+    \item Identify law: \begin{align*}
+              A \cup \emptyset & = A \\
+              A \cap U         & = A
+          \end{align*}
+    \item Idempotent laws: \begin{align*}
+              A \cup A & = A \\
+              A \cap A & = A
+          \end{align*}
+    \item Domination laws: \begin{align*}
+              A \cup U         & = U         \\
+              A \cap \emptyset & = \emptyset
+          \end{align*}
+    \item Double complement laws: \[
+              \overline{\overline{A}} = A
+          \]
+    \item Commutative laws: \begin{align*}
+              A \cup B & = B \cup A \\
+              A \cap B & = B \cap A
+          \end{align*}
+    \item Complement laws: \begin{align*}
+              A \cup \overline{A} & = U         \\
+              A\cap \overline{A}  & = \emptyset
+          \end{align*}
+\end{itemize}
+
 \end{document}
