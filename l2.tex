@@ -6,7 +6,7 @@
 \usepackage{graphicx}
 \graphicspath{ {./assets/} }
 \author{Enlai Li}
-\title{MATH240 -- Lecture 2}
+\title{MATH240 \textendash{} Lecture 2}
 \date{January 6, 2023}
 \begin{document}
 \maketitle
@@ -87,6 +87,7 @@ Theorem: If two sets A and B have the same Venn diagram, then $A=B$
 \end{enumerate}
 
 \subsection{Laws of boolean algebra}
+\marginpar[]{\raggedright{} Laws of boolean algebra are complete set of rules}
 \begin{itemize}
     \item Identify law: \begin{align*}
               A \cup \emptyset & = A \\
@@ -111,6 +112,63 @@ Theorem: If two sets A and B have the same Venn diagram, then $A=B$
               A \cup \overline{A} & = U         \\
               A\cap \overline{A}  & = \emptyset
           \end{align*}
+    \item Associative laws: \begin{align*}
+              (A\cup B)\cup C & = A\cup(B\cup C)
+              \\(A\cap B)\cap C & = A\cap(B\cap C)
+          \end{align*}
+    \item Distributive laws: \begin{align*}
+              A\cup (B\cap C) & = (A\cup B)\cap(A\cup C)
+              \\A\cap(B\cup C)& = (A\cap B)\cup(A\cap C)
+          \end{align*}
+    \item De Morgan's law: \begin{align*}
+              \overline{A \cup  B} & = \overline{A}\cap \overline{B}  \\
+              \overline{A \cap B}  & = \overline{A}\cup  \overline{B}
+          \end{align*}
+    \item Absorption law: \begin{align*}
+              A \cup (A \cap B) & = A \\
+              A \cap (A \cup B) & = A
+          \end{align*}
+          \marginpar[]{\raggedright{} Note: Past 3 sets or more than 2 levels of set equations, Venn diagrams become impossible to read But we can use the laws of boolean algebra to derive new set identities algebraically.}
 \end{itemize}
+ex: Check $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+
+\includegraphics{l2_2}
+
+ex: use set laws to show
+\[
+    \overline{A \cup (B \cap C)} = (\overline{C}\cup \overline{B})\cap \overline{A}
+\]
+\begin{align*}
+    \overline{A \cup (B \cap C)} & = \overline{A} \cup \overline{(B \cup C)} \text{ (De Morgan) }               \\
+                                 & = \overline{A} \cup (\overline{B}\cap \overline{C}) \text{ (De Morgan) }     \\
+                                 & = \overline{A} \cup (\overline{C}\cap \overline{B}) \text{ (Commutativity) } \\
+                                 & = (\overline{C}\cap \overline{B}) \cup \overline{A} \text{ (Commutativity) }
+\end{align*}
+
+\subsection{External set operations}
+The following set operations change the universe of the set
+\begin{itemize}
+    \item Cartesian product: $A \times B = \{(a,b) \ | \ a\in A, b\in B\}$ \text{ (set of ordered pairs) }\\
+          \marginpar[]{\raggedright{} Cardinality: $\lvert A \times B \rvert = \lvert A \rvert \times  \lvert B \rvert $}
+          ex: \begin{gather*}
+              A = \{1,2,3\} \quad B = \{0,1\} \\
+              A \times B = \{(1,0), (2,0),(3,0),(1,1)(2,1)(3,1)\}
+          \end{gather*}
+          ex2: \[
+              \{(x,y)\ \vert \ x\in \mathbb{R} , y \in \mathbb{R} \} = \mathbb{R} \times \mathbb{R} = \mathbb{R} ^{2} \text{ (The set of 2-dimensional vectors)}
+          \]
+    \item Power set: $\{x \ \vert \ x \subseteq A\}$ \text{ (set of all subsets)}
+          \marginpar[]{\raggedright{} Cardinality: $\lvert P(A) \rvert = 2 ^{\lvert A \rvert }$}
+          ex: \begin{align*}
+              A    & = \{1,2,3\}                                                                                   \\
+              P(A) & = \{\emptyset , \{1\}, \{2\}, \{3\}, \{1,2\}, \{2,3\},\{1,3\},\{1,2,3\}\}\text{ (8 elements)} \\
+          \end{align*}
+          ex2: \begin{gather*}
+              P(\emptyset ) = \{\emptyset \} \text{ (1 element)} \\
+              \lvert P(\emptyset ) \rvert = 1
+          \end{gather*}
+\end{itemize}
+
+
 
 \end{document}
