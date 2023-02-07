@@ -1,3 +1,5 @@
+% chktex-file 44
+% chktex-file 18
 \documentclass{article}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -10,5 +12,160 @@
 \date{January 11, 2023}
 \begin{document}
 \maketitle
+\section{Mathematical logic}
+\begin{itemize}
+    \item [Premise $\rightarrow $] All men are $\underbrace{mortal}_{M}$
+    \item [$\rightarrow $] $\underbrace{Socrates}_S$ is a $\underbrace{man}_{H (human)}$
+    \item [Conclusion $\rightarrow $] Therefore Socrates is mortal
+\end{itemize}
+All x such that x is H is M.\\ S is H\\ Therefore S is M
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{l}
+            $\forall x, H(x) \Rightarrow M(x)$ \\
+            $H(S)$                             \\
+            \hline{}
+            $M(S)$                             \\
+        \end{tabular}
+    \end{center}
+\end{table}
 
+\section{Propositional logic (True/False)}
+\subsection{Atomic propositions}
+The building block of propositional logic are propositions: statements that are either true or false. \\
+ex:
+\begin{itemize}
+    \item [p:] 21 is a multiple of 7 (True proposition)
+    \item [q:] $2+2=5$ (False proposition)
+    \item [r:] there exists an extraterrestrial life form (proposition)
+\end{itemize}
+\subsection{Compound propositions}
+Atomic propositions combined with logical connectors \\ ex:
+\begin{gather*}
+    2+2=5 \text{ and } \text{"there exists and extraterrestial lifeform}\\
+    = q \land r
+\end{gather*}
+
+\subsection{Logical connectors}
+\subsubsection{conjunction ($\land$) and}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            p & q & $p \land q$ \\
+            \hline
+            T & T & T           \\
+            T & F & F           \\
+            F & T & F           \\
+            F & F & F
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsubsection{Negation ($\lnot$) not}
+\begin{align*}
+    \lnot p & = \text{ Not } p = \overline{p} \\
+    q       & = "2+2=5"                       \\
+    \lnot q & = "2+2 \neq 5"
+\end{align*}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c}
+            p & $\lnot p$ \\
+            \hline
+            T & F         \\
+            F & T
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsubsection{Disjunction ($\lor$) or}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            p & q & $p\lor q$ \\
+            \hline
+            T & T & T         \\
+            T & F & T         \\
+            F & T & T         \\
+            F & F & F
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\subsubsection{More complex propositions}
+\[
+    \lnot (\lnot p \land \lnot q) = ?
+\]
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+            p & q & $\lnot p$ & $\lnot q$ & $\lnot p \land \lnot q$ & $\lnot (\lnot p \land \lnot q)$ \\
+            \hline
+            T & T & F         & F         & F                       & T                               \\
+            T & F & F         & T         & F                       & T                               \\
+            F & T & T         & F         & F                       & T                               \\
+            F & F & T         & T         & T                       & F
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\subsubsection{Set laws and logical equivalence}
+Set laws translate into logical equivalence:
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c}
+            Set            & Logic     \\
+            \hline
+            $U$            & True      \\
+            $\emptyset $   & False     \\
+            $\cup$         & $\land$   \\
+            $\cap$         & $\lor$    \\
+            $\overline{A}$ & $\lnot A$ \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+Since $p \lor q$ has the same truth table as $\lnot (\lnot p \land \lnot q)$, they are logically equivalent:
+\[
+    p \lor q \equiv \lnot (\lnot p \land \lnot q)
+\]
+
+\subsubsection{Exclusive or ($\oplus $) xor}
+Def: $p \oplus q \equiv (p \lor q) \land \lnot (p \land q)$
+
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            p & q & $p \oplus q$ \\
+            \hline
+            T & T & F            \\
+            T & F & T            \\
+            F & T & T            \\
+            F & F & F
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\subsubsection{Conditional ($\Rightarrow $)}
+Def: $p \Rightarrow q \equiv \lnot (p \land \lnot q) \equiv\lnot p \lor q$\\
+$p \Rightarrow q$: "p implies q": "if p then q"\\
+ex:
+\begin{itemize}
+    \item [p:] It rains
+    \item [q:] It's cloudy
+    \item [$p \Rightarrow q$:] If it rains outside, then it is cloudy
+\end{itemize}
+
+\marginpar[]{\raggedright{} $p \Rightarrow q$ is always true when p is false}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            p & q & $p \Rightarrow q$ \\
+            \hline
+            T & T & T                 \\
+            T & F & F                 \\
+            F & T & T                 \\
+            F & F & T
+        \end{tabular}
+    \end{center}
+\end{table}
 \end{document}
+
