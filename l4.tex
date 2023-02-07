@@ -3,6 +3,8 @@
 % chktex-file 8
 \documentclass{article}
 \usepackage{amssymb}
+\usepackage{float}
+\usepackage{caption}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{cancel}
@@ -21,5 +23,72 @@ Ex:
     \item [S =] you are a student
     \item [E =] you are an employee
 \end{itemize}
+\[
+    p = I \Rightarrow (S \lor E)
+\]
 
+Let's find a sentence for $\overline{p}$
+\begin{align*}
+    \lnot p
+     & = \lnot (I \Rightarrow (S \lor E))
+    \\ & = \lnot (\lnot I \lor (S \lor E)) \text{ (Def of $\Rightarrow $)}
+    \\ & = \lnot \lnot I \land \lnot(S \lor E) \text{ (De Morgan)}
+    \\ & =  I \land (\lnot S \land \lnot E) \text{ (De Morgan + Double negation)}
+\end{align*}
+
+$ \lnot p =$ You can access the internet on camput and you are not a student and you are not an employee
+
+\section{Four types of logical formulas}
+A logical formula is:
+\begin{itemize}
+    \item \underline{satisfiable} if its truth table contains at least one T
+    \item a \underline{contradiction} if not satisfiable (always false)
+    \item \underline{falsifiable} if its truth table contains at least one F
+    \item a \underline{tautology} if not falsifiable (always true)
+\end{itemize}
+\clearpage
+
+ex1: $p \land \lnot p$: contradiction
+\marginpar[]{\raggedright{} contradictions are always falsifiable}
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            p & $\lnot p$ & $p \land \lnot p$ \\
+            \hline
+            T & F         & F                 \\
+            F & T         & F
+        \end{tabular}
+    \end{center}
+\end{table}
+
+ex2: $p \lor \lnot p$: tautology
+\marginpar[]{\raggedright{} tautology are always satisfiable}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            p & $\lnot p$ & $p \lor \lnot p$ \\
+            \hline\hline
+            T & F         & T                \\
+            F & T         & T                \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+ex3: $p \iff q$: satisfiable and falsifiable
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            p & q & $p \iff q$ \\
+            \hline\hline
+            T & T & T          \\
+            T & F & F          \\
+            F & T & T          \\
+            F & F & T          \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
 \end{document}
