@@ -167,5 +167,75 @@ ex:
         \end{tabular}
     \end{center}
 \end{table}
+
+\subsubsection{Biconditional ($\iff$)}
+$p \iff q$: p if and only if q
+\begin{align*}
+    \text{Def: }    p \iff q & \equiv (p \Rightarrow q) \land (q \Rightarrow p)          \\
+                             & \equiv (p \land q) \lor (\overline{p} \land \overline{q}) \\
+                             & \equiv \overline{p \oplus q}
+\end{align*}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c}
+            p & q & $p \Rightarrow q$ & $q \Rightarrow p$ & $p \iff q \equiv((p \Rightarrow q) \land (q \Rightarrow p))$ \\
+            \hline
+            T & T & T                 & T                 & T                                                            \\
+            T & F & F                 & T                 & F                                                            \\
+            F & T & T                 & F                 & F                                                            \\
+            F & F & T                 & T                 & T
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsection{Set law in logic}
+\begin{itemize}
+    \item double negation: \[
+              \lnot \lnot p \equiv p
+          \]
+    \item idempotent: \begin{gather*}
+              p \land p \equiv p\\
+              p \lor p \equiv p
+          \end{gather*}
+    \item commutative: \begin{gather*}
+              p \land q \equiv q \land p\\
+              p \lor q \equiv q \lor p
+          \end{gather*}
+    \item absorption: \begin{gather*}
+              p \lor (p \land q) \equiv p\\
+              p \land (p \lor q) \equiv  p
+          \end{gather*}
+    \item association: \begin{gather*}
+              p \land ( q \land r) \equiv (p \land q) \land r \\
+              p \lor ( q \lor r) \equiv (p \lor q) \lor r
+          \end{gather*}
+    \item distribution: \begin{gather*}
+              p \land ( q \lor r) \equiv (p \land q) \lor (p \land r) \\
+              p \lor ( q \land r) \equiv (p \lor q) \land (p \lor r)
+          \end{gather*}
+    \item De Morgan: \begin{gather*}
+              \lnot (p \land q) \equiv \lnot p \lor \lnot q\\
+              \lnot (p \lor q) \equiv \lnot p \land \lnot q
+          \end{gather*}
+    \item negation: \begin{gather*}
+              p \lor (\lnot p) \equiv T\\
+              p \land (\lnot p ) \equiv F
+          \end{gather*}
+    \item identity: \begin{gather*}
+              p \land T = p\\
+              p \lor F = p
+          \end{gather*}
+    \item domination: \begin{gather*}
+              p \lor T = T\\
+              p \land F = F
+          \end{gather*}
+          \subsection{converse, contrapositive and inverse}
+
+          \begin{itemize}
+              \item statement: $p \Rightarrow  q$
+              \item converse: $q \Rightarrow p$
+              \item contrapositive: $\lnot q \Rightarrow \lnot p$
+              \item inverse: $\lnot p \Rightarrow \lnot q$
+          \end{itemize}
+\end{itemize}
 \end{document}
 
