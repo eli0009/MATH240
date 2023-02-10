@@ -13,5 +13,231 @@
 \date{February 8, 2023}
 \begin{document}
 \maketitle
+\section{Number theory ($\mathbb{Z} $)}
+\subsection{Divisibility}
+We have seen that this is a reflexive and transitive relation
+\[
+    x \ \vert \ y \iff \exists k \in \mathbb{Z} \text{, where } kx=y
+\]
+Theorem:
+\begin{enumerate}
+    \item If $a|b$, then $a|bc$ for every integer c
+    \item If $a|b$ and $a|c$, then $a|b \pm c$ for every integer c
+\end{enumerate}
+proof
+1.
+\begin{align*}
+    a|b
+    \Rightarrow & b = ka     \\
+    \Rightarrow & bc = (kc)a \\
+    \Rightarrow & a|bc
+\end{align*}
+2.
+\begin{align*}
+    a|b and a|c
+    \Rightarrow & b=ka \text{ and } c = la \\
+    \Rightarrow & b \pm c = (k \pm l)a     \\
+    \Rightarrow & a|b \pm c
+\end{align*}
 
+\subsubsection{Greatest common divisor}
+gcd of a and b is a number \[
+    d = gcd(a,b) \in \mathbb{Z}
+\]
+such that
+\begin{enumerate}
+    \item $d|a$ and $d|b$ \text{ (common divisor) }
+    \item $c|a$ and $c|b \Rightarrow c \le d$ \text{ (Greatest)}
+\end{enumerate}
+ex: a = 16, b = 24
+\\ positive divisor of 16: 1,2,4,8,16
+\\ positive divisor of 24: 1,2,3,4,6,8,12,24
+
+Thid algorithm is very inefficient and requires "testing" all numbers $\le a$ and $\le b$. It takes $\log(n)$ digits to write in a computer memory
+\[
+    \Rightarrow \log(n) = \text{ size of input }
+\]
+There are $\approx n$ numbers to test. It's an exponential in the size of n. (infeasible for a number with, say, 100 digits) \[
+    n = b ^{\log_n(n)}
+\]
+
+For the gcd problem, there is a much better algorithm (complexity log(n)). Found in $\approx$ 300 BC called \textbf{Euclid's algorithm}. It is based on the long division from elementary school \dots
+ex:
+\begin{align*}
+    515 \div 42 & = ?                 \\
+    515         & = 12 \times 42 + 11
+\end{align*}
+\begin{center}
+    \includegraphics[width=0.7\columnwidth,keepaspectratio]{assets/2023-02-09-21-54-47.png}
+\end{center}
+
+There is a method for finding number q (quotient) and r (remainder) such that
+\[
+    a = qb +r
+\]
+Theorem: $\forall a,b \in \mathbb{Z}, b \ne 0$, there exists integers $q \in \mathbb{Z} \text{ and } r \in \mathbb{Z} $ such that \[
+    a = qb +r
+\]
+and $0 \le r < b$, moreover, those numbers q and r are unique\\
+Proof 1: Existence
+\begin{enumerate}
+    \item if $0 < b \le a$ the use long division
+    \item If a $<$ b and b $>$ 0, add a multiple kb to a until $a+kb$ is $>b$. Then use case 1
+          \begin{gather*}
+              a+kb = qb+r \\
+              \Rightarrow a = (q-k)b+r
+          \end{gather*}
+    \item If $b<0$, apply case 1 or 2 with $-b$ instead of b \dots
+          \begin{align*}
+              \Rightarrow a & = q(-b) + r \\
+              a             & = (-q)b+r
+          \end{align*}
+\end{enumerate}
+
+Proof 2: Uniqueness \\
+Suppose we have 2 solutions, show that those two solutions are the same. In our case, Assume:
+\begin{align*}
+    a = q_1b+r_1              & 0 \le r_1 < \lvert b \rvert \\
+    \text{ and } a = q_2b+r_2 & 0 \le r_2 < \lvert b \rvert
+\end{align*}
+Goal: show that $q_1 = q_2$ and $r_1 = r_2$
+\begin{gather*}
+    a = q_1b+r_1 = q_2b+r_2 \\
+    (q_1 - q_2)b = r_1 - r_2 \\
+    \Rightarrow b | r_1-r_1 \\
+    \lvert r_1 - r_2 \rvert \le b-1
+\end{gather*}
+$r_1$ and $r_2$ are both in the interval $[0,b-1]$, so the only way for b to divide this is:
+\begin{gather*}
+    r_1 - r_2 = 0\\
+    r_1 = r_2
+\end{gather*}
+\begin{gather*}
+    (q_1 - q_2) b = 0 \\
+    q_1 - q_2 = 0 \\
+    q_1 = q_2
+\end{gather*}
+\hspace*{\fill} $\square$
+
+\textbf{Theorem}: If $a=qb+r$, then \[
+    \gcd(a,b) =
+    \gcd(b,r)
+\]
+Typically, we would have $b<a$ and $r<b$ so it reduces the gcd problem to a smaller instance
+
+Proof:
+\begin{align*}
+    \text{ Let } x & = gcd(a,b)  \\
+    y              & = gcd (b,v)
+\end{align*}
+Goal: prove $x=y$ \\
+We will prove this by proving
+\begin{enumerate}
+    \item $x \le y$
+    \item $y \le x$
+\end{enumerate}
+
+1. \begin{gather*}
+    x = gcd(a,b) \Rightarrow x|a \text{ and }  x|b \\
+    \text{ Since } a = qb+r, \text{ then } r = a-qb \\
+    \text{ But } x|a \text{ and } x|qb \Rightarrow x|r \\
+    \Rightarrow x \text{ is a common divisor of b and r } \\
+    \Rightarrow x \le y
+\end{gather*}
+2. \begin{gather*}
+    y = gcd(b,r) \Rightarrow y|b \text{ and }  y|r \\
+    \Rightarrow y|qb+r\\
+    \Rightarrow y|a \text{ (y is a common divisor of a and b)} \\
+    \Rightarrow y \le x
+\end{gather*}
+
+\textbf{Corollary} Euclid's algorithm:\\
+To find $gcd(a,b)$, assume $a>b$\dots \\ Find (with long division) r such that
+\[
+    a = qb+r
+\] then find $gcd(b,r)$ (with the same method)
+
+ex: find $gcd(515,42)$
+\marginpar[]{\raggedright{} We stop when we find a remainder of 0, because $gcd(x,0) = \lvert x \rvert $}
+\begin{gather*}
+    515 = 12 \times 42 + 11 \\
+    \Rightarrow gcd(515, 42) = gcd(42,11)\\
+    \text{Then } 42 = 3 \times 11 + 9 \\
+    11 = 1 \times 9 + 2 \\
+    9 = 4 \times 2 + 1\\
+    2 + 2 \times 1 + \boxed{0} \text{ (Stop)}
+\end{gather*}
+Conclusion: \begin{align*}
+    gcd (515,42)
+     & = gcd(42,11)        \\
+     & = gcd(11,9)         \\
+     & = gcd(9,2)          \\
+     & = gcd(2,1)          \\
+     & = gcd(\boxed{1} ,0) \\
+\end{align*}
+
+\textbf{Theorem} Bezout: \\
+Let $d = gcd(a,b)$, then there exists $s,t \in \mathbb{Z} $ such that
+\[
+    \boxed{ d = sa + tb}
+\]
+We roll back the steps of Euclid's algorithm
+
+ex: \begin{gather*}
+    a = 515 \quad b = 42 \quad d = 1\\
+    9 = 4 \times 2 + \boxed{1} \Rightarrow 1=9-4 \times 2 \\
+    11 = 1 \times 9 + \boxed{2} \Rightarrow  2=11-1 \times 9 \\
+    \Rightarrow 1 = 9-4 \times (11 -1 \times 9)\\
+    = 5 \times 9 - 4 \times 11
+\end{gather*}
+Then
+\begin{align*}
+    9 & = 42 - 3 \times 11                         \\
+    \Rightarrow 1
+      & = 5 \times (42-3 \times 11) - 4 \times 11  \\
+      & = 5 \times 42 - 15 \times 11 - 4 \times 11 \\
+      & = 5 \times 42 - 19 \times 11
+\end{align*}
+Then
+\begin{gather*}
+    11 = 515 - 12 \times 42 \\
+    \Rightarrow 1
+    = 5 \times 42 - 19(515-12 \times 42) - 19 \times 515 + 233 \times 42
+\end{gather*}
+
+\textbf{Proof} of Bezout algorithm:\\
+Let \begin{align*}
+    r_0 = a_1 \quad r_1 = b
+\end{align*}
+Then Euclid's algorithm runs as :
+\begin{align*}
+    r_0 & = q_1 r_1 + r_2 \\
+    r_1 & = q_2 r_2 + r_3 \\
+    r_2 & = q_3 r_3 + r_4 \\
+    \vdots
+\end{align*}
+We prove by induction on n that we can always find $t_n,S_n \in \mathbb{Z} $ (including the gcd, which is one of those remainders $r_n$) such that \[
+    r_n = s_n a + t_n b
+\]
+There are two basic cases here:
+\begin{itemize}
+    \item [n=0:] $r_0 =a = 1 \times a+ 0 \times b$ so $s_0 = 1, t_0 = 0$
+    \item [n=1:] $r_1 =b = 0 \times a+ 1 \times b$ so $s_1 = 0, t_1 = 1$
+\end{itemize}
+\textbf{Induction step} Asumme that:
+\begin{align*}
+    r _{n-1} & = s _{n-1} a + t _{n-1} b \\
+    r _{n}   & = s _{n} a + t _{n} b
+\end{align*}
+We want to prove it for $r _{n+1}$, but
+\begin{align*}
+    r _{n-1}             & =  q_nr_n + r _{n+1}                                                                        \\
+    \Rightarrow r _{n+1} & =  r _{n-1} - q_nr_n                                                                        \\
+                         & = (s _{n-1}a + t _{n-1} b) - q_n (s_na + t_nb)                                              \\
+                         & = \underbrace{(s _{n-1} - q_ns_n)}_{s _{n+1}}a + \underbrace{(t _{n-1}-q_nt_n)}_{t _{n+1}}b
+\end{align*}
+\textbf{Conclusion} Since $d = r_n$ for some n, then \[
+    d = s_na +t_nb
+\]
+\hspace*{\fill} $\square$
 \end{document}
