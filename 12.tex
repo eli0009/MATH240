@@ -1,0 +1,207 @@
+% chktex-file 44
+% chktex-file 18
+% chktex-file 8
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{graphicx}
+\graphicspath{ {./assets/} }
+\author{Enlai Li}
+\title{MATH240 -- Lecture 12}
+\date{February 10, 2023}
+\begin{document}
+\maketitle
+\section{Last lecture}
+\subsection{Euclid's algorithm}
+\[
+    a,b \in \mathbb{Z} \rightarrow gcd(a,b) = d
+\]
+\subsection{Bezout's theorem}
+\[
+    d = gcd(a,b) \rightarrow d = sa + tb
+\]
+\subsection{Corollary}
+If $c|a$ and $c|b$, then $c|gcd(a,b)$
+
+\subsection{Proof}
+\begin{gather*}
+    c|a \text{ and } c|b \\
+    \Rightarrow a = kc \text{ and } b = nc
+\end{gather*}
+Then
+\begin{align*}
+    d
+     & = gcd(a,b)                                   \\
+     & = sa + tb \text{, where } s,t \in \mathbb{Z} \\
+     & = sac + tbc                                  \\
+     & = c(sk+tn) \Rightarrow c|d
+\end{align*}
+
+\section{Coprime}
+two integers a,b are coprime if gcd(a,b) = 1
+ex:
+\begin{itemize}
+    \item 42 and 515 are coprime
+    \item a = 7, n = not a multiple of 7 \\ $\Rightarrow gcd(7,9)=1$
+\end{itemize}
+\marginpar[]{\raggedright{} This works for any other prime number}
+That's because the only divisions of 7 are 1 (only possibility left) and 7 (not a divisor of n)
+
+\textbf{Theorem} a and b are coprime $\iff 1 = sa+tb$ \\
+\textbf{proof} Bezout when d=1
+\begin{gather*}
+    1=sa+tb \\
+    \text{Let } d = gcd(a,b) \\
+    \text{ Goal: prove } d = 1 \\
+    d|a \text{ and } d|b\\
+    \Rightarrow d|sa + tb \text{ (elementary property of 1)}\\
+    \Rightarrow d|1\\
+    \Rightarrow d = 1
+\end{gather*}
+
+\section{prime numbers}
+p is prime $\iff p > 1$ and its only positive divisors are 1 and p
+
+ex: \[
+    2,3,5,7,11,13,\dots
+\]
+A number that is not a prime is called composite
+\marginpar[]{\raggedright{} n is composite $\iff n = ab \text{, where } a,b>1$}
+ex: \[
+    42 = 6 \times 7
+\]
+Prime numbers are interesting in number theory because they are easy to understand, yet they easily lead to very difficult problems
+
+\subsection{Goldbach's conjecture (open since 1742)}
+Every even number $n>2$ is the sum of two primes\\
+ex:
+\begin{gather*}
+    42 = 19 + 23\\
+    20 = 13+7
+\end{gather*}
+It's been tested by computers to work up to very large numbers (400 trillions),
+no one has proved it
+
+\subsection{Fundamental Theorem of Arithmetic (FTA)}
+primes are a fundamental role in number theory as the building blocks of all integers
+\\ex: we can write 42 as product of primes
+\begin{align*}
+    42 & =6 \times 7 \\&= 2 \times 3 \times 7
+\end{align*}
+We can always decompose a number as a product of primes, in a unique way. We need the following lemma to prove this: \\
+\textbf{Lemma} if p is prime and $p|ab$ then $p|a$ or $p|b$\\
+\marginpar[]{\raggedright{} We really need p to be prime for this to work}
+ex:
+\begin{gather*}
+    3 | 42 = 6 \times 7 \text{ and indeed } 3 | 6 \\
+    \text{Counter-example } 14 | 42 = 6 \times 7 \text{ but } 14 \cancel{\lvert} 6 \text{ and } 14 \cancel{\lvert} 7
+\end{gather*}
+\textbf{Proof}
+\begin{gather*}
+    \text{Assume } p | ab, p \text{ is prime } \Rightarrow ab=px \\
+    \text{Goal: } p|a \text{ or } p|b \\
+    \text{Assume } p \cancel{|} a, \text{ New goal} p | b \\
+    \text{Since } p \cancel{|} a \text{ then p and a are coprime}
+\end{gather*}
+\begin{align*}
+    \Rightarrow  1 & = sp+ta         \\
+    b              & = spb + tab     \\
+                   & = spb+tpx       \\
+                   & = p(sb+tx)      \\
+                   & \Rightarrow p|b
+\end{align*}
+\hspace*{\fill} $\square$
+
+Let $n \ge 2$ be an integer, the we can find prime numbers \[
+    p_1 \le p_2 \le p_3 \dots \le p_k
+\]
+
+such that $
+    n =    p_1 \le p_2 \le p_3 \dots \le p_k
+$
+moreover this list of prime is unique
+\textbf{Proof} We must prove existence and uniqueness of the prime factorization of n. We do both in a single proof by strong induction!
+
+\textbf{Base case:} n = 2
+\begin{itemize}
+    \item Existence: n = 2 (prime)
+    \item Uniqueness: $2 =
+              p_1  p_2  p_3 \dots  p_k \text{, where }
+              p_1 = 2 \text{ and }  p_2  p_3 \dots  p_k = 1$
+\end{itemize}
+\textbf{Induction step}
+Asuume the FTA true for all integers $< b$. We want to prove it for n.
+2 cases:
+\\
+\textbf{ n is prime}: same as base case (replace 2 by n)\\
+\textbf{ n is composite}:
+\begin{itemize}
+    \item Existence: $n = ab, n > a,b \ge \mathbb{Z} $, by induction hypothesis we can write
+          \begin{gather*}
+              a =p_1  p_2  p_3 \dots  \le p_k \\
+              b = q_1  q_2  q_3 \dots \le q_l \\
+              \Rightarrow  n = p_1p_2 \dots p_kq_1q_2 q_l
+          \end{gather*}
+          This is a product of primes! rearrange them in  increasing order and we have a solution
+    \item Uniqueness: Assume the two prime decompositions of n
+          \begin{gather*}
+              n =p_1  p_2  p_3 \dots p_k \text{, where } p_1 \le \dots  \le p_k \\
+              n =q_1  q_2  q_3 \dots q_l \text{, where } q_1 \le \dots  \le q_l \\
+              p_1 | n \Rightarrow p_1|q_1q_2 \dots q_l \\
+              \text{By the lemma}\\
+              p_1|q_1 \text{ or } p_1|q_2 \text{ or } \dots \text{ or } p_1|q_l \\
+              \Rightarrow p_1=q_1 \text{ or } p_1=q_2 \text{ or } \dots \text{ or } p_1=q_l \\
+              \Rightarrow p_1=q_1 \text{, for some } i
+          \end{gather*}
+          Now we consider the number $\frac{n}{p_1} < n$ by the induction hypothesis, all primes $p_2  p_3 \dots  p_k$ are the same as the primes $q_1  q_2  q_3 \dots  q_l$. All primes $p_1 p_2  p_3 \dots  p_k$ are the same as $q_1  q_2  q_3 \dots  q_l$
+          \[
+              k=l \text{ and } p_1 = q _{1} \text{ and } \dots \text{ and } p_k = p_l
+          \]
+          \\
+          \hspace*{\fill} $\square$
+\end{itemize}
+We can regroup repeated factors and write the prime decomposition with exponents (canonical form)
+\[
+    n = p_1 ^{\alpha_1} p_2  ^{\alpha_2} p_3 ^{\alpha_3} \dots  p_k^{\alpha_k} \text{, where } p_1 < \dots < p_k \text{ and } \alpha_1 > \dots > \alpha_k > 0
+\]
+ex:
+\begin{align*}
+    72
+     & = 2 \times 36                           \\
+     & = 2 \times 2 \times 2 \times 3 \times 3 \\
+     & = 2 ^{3} \times 3 ^{2}
+\end{align*}
+We could in fact allow 0 in the exponents but we could lose uniqueness of the list of primes\\
+\textbf{Lemma}
+\begin{gather*}
+    \text{With all exponents $\le 0$, let }\\
+    a = p_1 ^{\alpha_1} p_2  ^{\alpha_2} p_3 ^{\alpha_3} \dots  p_k^{\alpha_k} \\
+    b = p_1 ^{\beta_1} p_2  ^{\beta_2} p_3 ^{\beta_3} \dots  p_k^{\beta_k}
+    \\ \text{Then}\\
+    a | b \iff \alpha_i \le \beta_i \text{, for all } i
+\end{gather*}
+Ex:
+\begin{gather*}
+    72 = 3 ^{2} 2^3 \\
+    36 = 3 ^{2} 2 ^{2}
+\end{gather*}
+\textbf{Proof} Suppose $a|b$ then $b=ac$ \\
+Let $c = p_1 ^{\alpha_1} p_2  ^{\alpha_2} p_3 ^{\alpha_3} \dots  p_k^{\alpha_k}$, Then $c = ac$
+\begin{gather*}
+    p_1 ^{\beta_1} p_2  ^{\beta_2} p_3 ^{\beta_3} \dots  p_k^{\beta_k} =p_1 ^{\alpha_1} p_2  ^{\alpha_2} p_3 ^{\alpha_3} \dots  p_k^{\alpha_k} \times  p_1 ^{q_1} p_2  ^{q_2} p_3 ^{q_3} \dots  p_k^{q_k}
+\end{gather*}
+Exponents are unique (by FTA)
+\begin{gather*}
+    \beta_1 = \alpha + q_1 \ge \alpha_1\\
+    \beta_2 = \alpha + q_2 \ge \alpha_2\\
+    \beta_k = \alpha + q_k \ge \alpha_k\\
+\end{gather*}
+Assume $\alpha _i \le \beta _i, \forall i$
+Let \[
+    p_i = \beta-\alpha_i, \forall i \ge 0
+\]
+Let $c = p_1 ^{\beta_1} p_2  ^{\beta_2} p_3 ^{\beta_3} \dots  p_k$
+Then $b = ac Ra a | b$
+\end{document}
