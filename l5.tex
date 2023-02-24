@@ -13,5 +13,44 @@
 \date{January 18, 2023}
 \begin{document}
 \maketitle
+\section{Predicate Logic}
+\begin{center}
+    p = "All men are mortal"
+\end{center}
+is an atomic proposition from the point of view of propositional logic (cannot be decomposed into simpler propositions).
+It still has some structure:
+\begin{itemize}
+    \item "men" and "mortal" are predicates
+    \item "All" is a quantifier
+    \item "are" is a copula
+\end{itemize}
+
+A predicate is something that is true, or false, about a subject (which may vary)
+\\ex: "mortal"
+\begin{itemize}
+    \item Socratos is mortal: True
+    \item Zeus is mortal: False
+\end{itemize}
+
+Mathematically, a predicate is a function
+\begin{gather*}
+    P: x\in U \rightarrow Bool:\{T,F\} \quad U: \text{Universe of discourse}\\
+    \text{Subject } \rightarrow \text{ Truth value}
+\end{gather*}
+
+In predicate logic, instead of dealing with propositional variables, we deal with predicates, P(x) and our variables x range over any universe U
+\begin{gather*}
+    P(x): \text{"} x \ge 0 \text{"} \rightarrow \text{ When you give a value to x, you find a proposition } \\
+    P(2): \text{"} 2 \ge 0 \text{"}: True \\
+    P(-1): \text{"} -1 \ge 0 \text{"}: False \\
+\end{gather*}
+
+Quantifiers:
+\begin{itemize}
+    \item $\forall$: "for all": Universal quantifier
+    \item $\exists$: "there exists": Universal quantifier
+\end{itemize}
+
+We can bind a variable (in a proposition) to a quantifier, so that it can no longer be freely set
 
 \end{document}
